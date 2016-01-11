@@ -1,34 +1,22 @@
-#PermissionSQL [![Build Status](https://travis-ci.org/xyproto/permissionsql.svg?branch=master)](https://travis-ci.org/xyproto/permissionsql) [![GoDoc](https://godoc.org/github.com/xyproto/permissionsql?status.svg)](http://godoc.org/github.com/xyproto/permissionsql)
+#PermissionSQL [![Build Status](https://travis-ci.org/xyproto/permissiongres.svg?branch=master)](https://travis-ci.org/xyproto/permissiongres) [![GoDoc](https://godoc.org/github.com/xyproto/permissiongres?status.svg)](http://godoc.org/github.com/xyproto/permissiongres)
 
 Middleware for keeping track of users, login states and permissions.
 
-Uses MariaDB/MySQL as a backend.
+Uses PostgreSQL as a backend.
 
 
 Connecting
 ----------
 
-For connecting to a MySQL/MariaDB host that is running locally, the `New` function can be used. For connecting to a remote server, the `NewWithDSN` function can be used.
-
-
-Background
-----------
-
-There was a feature request for [permissions2](https://github.com/xyproto/permissions2) for adding MySQL support.
-
-At first I tried combining the code for Redis database access and SQL database access in the [simpleredis](https://github.com/xyproto/simpleredis) package. I tried interfaces and all sorts of trickery and refactoring, but the result was unsatisfactory, because Redis and SQL databases are so different. However, creating a MariaDB/MySQL version of [simpleredis](https://github.com/xyproto/simpleredis) called [simplemaria](https://github.com/xyproto/simplemaria) worked out nicely. The [simplemaria](https://github.com/xyproto/simplemaria) package tries to address the shortcomings of handling UTF-8 strings in MariaDB/MySQL and provide the same functions and behavior as [simpleredis](https://github.com/xyproto/simpleredis), but not with the same performance characteristics.
-
-I recommend using Redis and [permissions2](https://github.com/xyproto/permissions2) instead of this package, if possible. There is also [permissionbolt](https://github.com/xyproto/permissionbolt), which uses Bolt as a database (Bolt is written in Go).
-
-A PostgreSQL port of [simplemaria](https://github.com/xyproto/simplemaria) and [permissionsql](https://github.com/xyproto/permissionsql) would be warmly welcome.
+For connecting to a PostgreSQL host that is running locally, the `New` function can be used. For connecting to a remote server, the `NewWithDSN` function can be used.
 
 
 Features and limitations
 ------------------------
 
-* Uses secure cookies and stores user information in a MariaDB/MySQL database.
-* Suitable for running a local MariaDB/MySQL server, registering/confirming users and managing public/user/admin pages.
-* Also supports connecting to remote MariaDB/MySQL servers.
+* Uses secure cookies and stores user information in a PostgreSQL database.
+* Suitable for running a local PostgreSQL server, registering/confirming users and managing public/user/admin pages.
+* Also supports connecting to remote PostgreSQL servers.
 * Supports registration and confirmation via generated confirmation codes.
 * Tries to keep things simple.
 * Only supports "public", "user" and "admin" permissions out of the box, but offers functionality for implementing more fine grained permissions, if so desired.
@@ -49,15 +37,15 @@ import (
 	"strings"
 
 	"github.com/codegangsta/negroni"
-	"github.com/xyproto/permissionsql"
+	"github.com/xyproto/permissiongres"
 )
 
 func main() {
 	n := negroni.Classic()
 	mux := http.NewServeMux()
 
-	// New permissionsql middleware
-	perm, err := permissionsql.New()
+	// New permissiongres middleware
+	perm, err := permissiongres.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -124,7 +112,7 @@ func main() {
 		http.Error(w, "Permission denied!", http.StatusForbidden)
 	})
 
-	// Enable the permissionsql middleware
+	// Enable the permissiongres middleware
 	n.Use(perm)
 
 	// Use mux for routing, this goes last
@@ -147,14 +135,14 @@ import (
 	"strings"
 
 	"github.com/go-martini/martini"
-	"github.com/xyproto/permissionsql"
+	"github.com/xyproto/permissiongres"
 )
 
 func main() {
 	m := martini.Classic()
 
-	// New permissionsql middleware
-	perm, err := permissionsql.New()
+	// New permissiongres middleware
+	perm, err := permissiongres.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -229,7 +217,7 @@ func main() {
 		c.Next()
 	}
 
-	// Enable the permissionsql middleware
+	// Enable the permissiongres middleware
 	m.Use(permissionHandler)
 
 	// Serve
@@ -249,14 +237,14 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/xyproto/permissionsql"
+	"github.com/xyproto/permissiongres"
 )
 
 func main() {
 	g := gin.New()
 
-	// New permissionsql middleware
-	perm, err := permissionsql.New()
+	// New permissiongres middleware
+	perm, err := permissiongres.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -280,7 +268,7 @@ func main() {
 	// Logging middleware
 	g.Use(gin.Logger())
 
-	// Enable the permissionsql middleware, must come before recovery
+	// Enable the permissiongres middleware, must come before recovery
 	g.Use(permissionHandler)
 
 	// Recovery middleware
@@ -360,14 +348,14 @@ import (
 	"strings"
 
 	"github.com/Unknwon/macaron"
-	"github.com/xyproto/permissionsql"
+	"github.com/xyproto/permissiongres"
 )
 
 func main() {
 	m := macaron.Classic()
 
-	// New permissionsql middleware
-	perm, err := permissionsql.New()
+	// New permissiongres middleware
+	perm, err := permissiongres.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -395,7 +383,7 @@ func main() {
 		ctx.Next()
 	}
 
-	// Enable the permissionsql middleware, must come before recovery
+	// Enable the permissiongres middleware, must come before recovery
 	m.Use(permissionHandler)
 
 	// Recovery middleware
@@ -489,7 +477,7 @@ Coding style
 Online API Documentation
 ------------------------
 
-[godoc.org](http://godoc.org/github.com/xyproto/permissionsql)
+[godoc.org](http://godoc.org/github.com/xyproto/permissiongres)
 
 General information
 -------------------

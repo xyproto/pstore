@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/codegangsta/negroni"
-	"github.com/xyproto/permissionsql"
+	"github.com/xyproto/permissiongres"
 )
 
 func main() {

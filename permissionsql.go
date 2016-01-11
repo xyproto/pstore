@@ -1,5 +1,5 @@
-// Package permissionsql provides a way to keeping track of users, login states and permissions.
-package permissionsql
+// Package permissiongres provides a way to keeping track of users, login states and permissions.
+package permissiongres
 
 import (
 	"github.com/xyproto/pinterface"

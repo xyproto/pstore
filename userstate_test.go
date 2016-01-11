@@ -1,4 +1,4 @@
-package permissionsql
+package permissiongres
 
 import (
 	"testing"

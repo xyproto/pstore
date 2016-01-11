@@ -1,4 +1,4 @@
-package permissionsql
+package permissiongres
 
 import (
 	"errors"
@@ -7,14 +7,14 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/xyproto/cookie"         // For cookies
-	"github.com/xyproto/pinterface"     // For interfaces
-	db "github.com/xyproto/simplemaria" // MariaDB/MySQL database wrapper
+	"github.com/xyproto/cookie"        // For cookies
+	"github.com/xyproto/pinterface"    // For interfaces
+	db "github.com/xyproto/simplegres" // PostgreSQL database wrapper
 )
 
 const (
 	// username:password@host:port/database
-	defaultConnectionString = "localhost:3306/"
+	defaultConnectionString = "localhost:5432/"
 )
 
 var (
@@ -33,7 +33,7 @@ type UserState struct {
 
 // Create a new *UserState that can be used for managing users.
 // The random number generator will be seeded after generating the cookie secret.
-// A Host* for the local MariaDB/MySQL server will be created.
+// A Host* for the local PostgreSQL server will be created.
 func NewUserStateSimple() (*UserState, error) {
 	// connection string | initialize random generator after generating the cookie secret
 	return NewUserState(defaultConnectionString, true)
