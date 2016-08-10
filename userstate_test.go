@@ -7,8 +7,7 @@ import (
 )
 
 const (
-	// "username:password@host:port/database"
-	connectionString = "travis:@127.0.0.1/" // for Travis-CI
+	connectionString = "postgres:@127.0.0.1/"
 )
 
 func TestPerm(t *testing.T) {

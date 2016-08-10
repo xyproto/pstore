@@ -4,6 +4,11 @@ Middleware for keeping track of users, login states and permissions.
 
 Uses PostgreSQL as a backend.
 
+Known bugs
+----------
+
+* Work in progress, there are currently issues with the simplehstore package.
+
 
 Connecting
 ----------
