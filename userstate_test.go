@@ -190,3 +190,30 @@ func TestHostPassword(t *testing.T) {
 		t.Error("Error, user bob should not exist")
 	}
 }
+
+func TestLogout(t *testing.T) {
+	userstate, err := NewUserState(connectionString, true)
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	userstate.AddUser("bob", "hunter1", "bob@zombo.com")
+	if !userstate.HasUser("bob") {
+		t.Error("Error, user bob should exist")
+	}
+
+	userstate.users.Set("bob", "loggedin", "true")
+	userstate.SetAdminStatus("bob")
+	userstate.Logout("bob")
+
+	if userstate.IsLoggedIn("bob") {
+		t.Error("Error, user bob should be logged out now")
+	}
+
+	userstate.RemoveUser("bob")
+	if userstate.HasUser("bob") {
+		t.Error("Error, user bob should not exist")
+	}
+
+}

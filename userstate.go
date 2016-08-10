@@ -14,7 +14,7 @@ import (
 
 const (
 	// username:password@host:port/database
-	defaultConnectionString = "localhost:5432/"
+	defaultConnectionString = "postgres:@127.0.0.1/"
 )
 
 var (
