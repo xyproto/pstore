@@ -2,8 +2,6 @@
 
 Middleware for keeping track of users, login states and permissions.
 
-Uses PostgreSQL as the database backend.
-
 Uses [PostgreSQL](https://postgresql.org) for the database. For using [Redis](http://redis.io) as a backend instead, look into [permissions2](https://github.com/xyproto/permissions2).
 There is also a [BoltDB](https://github.com/xyproto/permissionbolt) and [MariaDB/MySQL](https://github.com/xyproto/permissionsql) backend. They are interchangable.
 
