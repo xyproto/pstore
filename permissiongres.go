@@ -1,5 +1,5 @@
-// Package permissiongres provides a way to keeping track of users, login states and permissions.
-package permissiongres
+// Package permissionwrench provides a way to keeping track of users, login states and permissions.
+package permissionwrench
 
 import (
 	"github.com/xyproto/pinterface"

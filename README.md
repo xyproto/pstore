@@ -1,4 +1,4 @@
-#PermissionGres [![Build Status](https://travis-ci.org/xyproto/permissiongres.svg?branch=master)](https://travis-ci.org/xyproto/permissiongres) [![GoDoc](https://godoc.org/github.com/xyproto/permissiongres?status.svg)](http://godoc.org/github.com/xyproto/permissiongres)
+#PermissionWrench [![Build Status](https://travis-ci.org/xyproto/permissionwrench.svg?branch=master)](https://travis-ci.org/xyproto/permissionwrench) [![GoDoc](https://godoc.org/github.com/xyproto/permissionwrench?status.svg)](http://godoc.org/github.com/xyproto/permissionwrench)
 
 Middleware for keeping track of users, login states and permissions.
 
@@ -37,15 +37,15 @@ import (
 	"strings"
 
 	"github.com/codegangsta/negroni"
-	"github.com/xyproto/permissiongres"
+	"github.com/xyproto/permissionwrench"
 )
 
 func main() {
 	n := negroni.Classic()
 	mux := http.NewServeMux()
 
-	// New permissiongres middleware
-	perm, err := permissiongres.New()
+	// New permissionwrench middleware
+	perm, err := permissionwrench.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -112,7 +112,7 @@ func main() {
 		http.Error(w, "Permission denied!", http.StatusForbidden)
 	})
 
-	// Enable the permissiongres middleware
+	// Enable the permissionwrench middleware
 	n.Use(perm)
 
 	// Use mux for routing, this goes last
@@ -135,14 +135,14 @@ import (
 	"strings"
 
 	"github.com/go-martini/martini"
-	"github.com/xyproto/permissiongres"
+	"github.com/xyproto/permissionwrench"
 )
 
 func main() {
 	m := martini.Classic()
 
-	// New permissiongres middleware
-	perm, err := permissiongres.New()
+	// New permissionwrench middleware
+	perm, err := permissionwrench.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -217,7 +217,7 @@ func main() {
 		c.Next()
 	}
 
-	// Enable the permissiongres middleware
+	// Enable the permissionwrench middleware
 	m.Use(permissionHandler)
 
 	// Serve
@@ -237,14 +237,14 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/xyproto/permissiongres"
+	"github.com/xyproto/permissionwrench"
 )
 
 func main() {
 	g := gin.New()
 
-	// New permissiongres middleware
-	perm, err := permissiongres.New()
+	// New permissionwrench middleware
+	perm, err := permissionwrench.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -268,7 +268,7 @@ func main() {
 	// Logging middleware
 	g.Use(gin.Logger())
 
-	// Enable the permissiongres middleware, must come before recovery
+	// Enable the permissionwrench middleware, must come before recovery
 	g.Use(permissionHandler)
 
 	// Recovery middleware
@@ -348,14 +348,14 @@ import (
 	"strings"
 
 	"github.com/Unknwon/macaron"
-	"github.com/xyproto/permissiongres"
+	"github.com/xyproto/permissionwrench"
 )
 
 func main() {
 	m := macaron.Classic()
 
-	// New permissiongres middleware
-	perm, err := permissiongres.New()
+	// New permissionwrench middleware
+	perm, err := permissionwrench.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -383,7 +383,7 @@ func main() {
 		ctx.Next()
 	}
 
-	// Enable the permissiongres middleware, must come before recovery
+	// Enable the permissionwrench middleware, must come before recovery
 	m.Use(permissionHandler)
 
 	// Recovery middleware
@@ -477,7 +477,7 @@ Coding style
 Online API Documentation
 ------------------------
 
-[godoc.org](http://godoc.org/github.com/xyproto/permissiongres)
+[godoc.org](http://godoc.org/github.com/xyproto/permissionwrench)
 
 General information
 -------------------

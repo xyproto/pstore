@@ -1,4 +1,4 @@
-package permissiongres
+package permissionwrench
 
 import (
 	"testing"
