@@ -205,7 +205,19 @@ func TestLogout(t *testing.T) {
 
 	userstate.users.Set("bob", "loggedin", "true")
 	userstate.SetAdminStatus("bob")
-	userstate.Logout("bob")
+	userstate.users.Set("bob", "loggedin", "false")
+
+	loggedinstate, err := userstate.users.Get("bob", "loggedin")
+	if err != nil {
+		t.Error(err)
+	}
+	if loggedinstate == "true" {
+		t.Error("Logged in state should be false, but it is still true")
+	}
+
+	if !userstate.HasUser("bob") {
+		t.Error("bob disappeared!")
+	}
 
 	if userstate.IsLoggedIn("bob") {
 		t.Error("Error, user bob should be logged out now")
