@@ -1,4 +1,4 @@
-#PermissionWrench [![Build Status](https://travis-ci.org/xyproto/permissionwrench.svg?branch=master)](https://travis-ci.org/xyproto/permissionwrench) [![GoDoc](https://godoc.org/github.com/xyproto/permissionwrench?status.svg)](http://godoc.org/github.com/xyproto/permissionwrench)
+#PermissionWrench [![Build Status](https://travis-ci.org/xyproto/permissionwrench.svg?branch=master)](https://travis-ci.org/xyproto/permissionwrench) [![GoDoc](https://godoc.org/github.com/xyproto/permissionwrench?status.svg)](http://godoc.org/github.com/xyproto/permissionwrench) [![Report Card](https://img.shields.io/badge/go_report-A+-brightgreen.svg?style=flat)](http://goreportcard.com/report/xyproto/permissionwrench)
 
 Middleware for keeping track of users, login states and permissions.
 
@@ -870,7 +870,7 @@ Password hashing
 Additional resources
 --------------------
 
-* Here is a short code snippet for retriving the underlying PostgreSQL database: https://gist.github.com/xyproto/?
+* Here is a short code snippet for retriving the underlying PostgreSQL database: https://gist.github.com/xyproto/08aa02cbdec33f5f0ff00a2183db29f6
 
 
 

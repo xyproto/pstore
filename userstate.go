@@ -147,11 +147,6 @@ func NewUserState(connectionString string, randomSeed bool) (*UserState, error) 
 	return state, nil
 }
 
-// Database retrieves the underlying database. It helps retrieve the underlying database.
-func (state *UserState) Database() *db.Host {
-	return state.host
-}
-
 // Host retrieves the underlying database. It helps fulfill the IHost interface.
 func (state *UserState) Host() pinterface.IHost {
 	return state.host
