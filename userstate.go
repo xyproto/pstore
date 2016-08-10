@@ -21,6 +21,7 @@ var (
 	minConfirmationCodeLength = 20 // minimum length of the confirmation code
 )
 
+// UserState keeps track of all usernames, passwords and information about users
 type UserState struct {
 	users             *db.HashMap // Hash map of users, with several different fields per user ("loggedin", "confirmed", "email" etc)
 	usernames         *db.Set     // A list of all usernames, for easy enumeration
@@ -40,14 +41,14 @@ func NewUserStateSimple() (*UserState, error) {
 
 // Create a new *UserState that can be used for managing users.
 // connectionString may be on the form "username:password@host:port/database".
-// If randomseed is true, the random number generator will be seeded after generating the cookie secret (true is a good default value).
-func NewUserStateWithDSN(connectionString string, database_name string, randomseed bool) (*UserState, error) {
+// If randomSeed is true, the random number generator will be seeded after generating the cookie secret (true is a good default value).
+func NewUserStateWithDSN(connectionString string, databaseName string, randomSeed bool) (*UserState, error) {
 	// Test connection
 	if err := db.TestConnectionHostWithDSN(connectionString); err != nil {
 		return nil, err
 	}
 
-	host := db.NewHostWithDSN(connectionString, database_name)
+	host := db.NewHostWithDSN(connectionString, databaseName)
 
 	state := new(UserState)
 
@@ -73,7 +74,7 @@ func NewUserStateWithDSN(connectionString string, database_name string, randomse
 	state.cookieSecret = cookie.RandomCookieFriendlyString(30)
 
 	// Seed the random number generator
-	if randomseed {
+	if randomSeed {
 		rand.Seed(time.Now().UnixNano())
 	}
 
@@ -86,7 +87,7 @@ func NewUserStateWithDSN(connectionString string, database_name string, randomse
 
 	if err := host.Ping(); err != nil {
 		defer host.Close()
-		return nil, errors.New(fmt.Sprintf("Error when pinging %s: %s\n", connectionString, err.Error()))
+		return nil, fmt.Errorf("Error when pinging %s: %s\n", connectionString, err.Error())
 	}
 
 	return state, nil
@@ -94,8 +95,8 @@ func NewUserStateWithDSN(connectionString string, database_name string, randomse
 
 // Create a new *UserState that can be used for managing users.
 // connectionString may be on the form "username:password@host:port/database".
-// If randomseed is true, the random number generator will be seeded after generating the cookie secret (true is a good default value).
-func NewUserState(connectionString string, randomseed bool) (*UserState, error) {
+// If randomSeed is true, the random number generator will be seeded after generating the cookie secret (true is a good default value).
+func NewUserState(connectionString string, randomSeed bool) (*UserState, error) {
 	// Test connection
 	if err := db.TestConnectionHost(connectionString); err != nil {
 		return nil, err
@@ -127,7 +128,7 @@ func NewUserState(connectionString string, randomseed bool) (*UserState, error) 
 	state.cookieSecret = cookie.RandomCookieFriendlyString(30)
 
 	// Seed the random number generator
-	if randomseed {
+	if randomSeed {
 		rand.Seed(time.Now().UnixNano())
 	}
 
@@ -140,7 +141,7 @@ func NewUserState(connectionString string, randomseed bool) (*UserState, error) 
 
 	if err := host.Ping(); err != nil {
 		defer host.Close()
-		return nil, errors.New(fmt.Sprintf("Error when pinging %s: %s\n", connectionString, err.Error()))
+		return nil, fmt.Errorf("Error when pinging %s: %s\n", connectionString, err.Error())
 	}
 
 	return state, nil

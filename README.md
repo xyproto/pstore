@@ -1,13 +1,8 @@
-#PermissionSQL [![Build Status](https://travis-ci.org/xyproto/permissiongres.svg?branch=master)](https://travis-ci.org/xyproto/permissiongres) [![GoDoc](https://godoc.org/github.com/xyproto/permissiongres?status.svg)](http://godoc.org/github.com/xyproto/permissiongres)
+#PermissionGres [![Build Status](https://travis-ci.org/xyproto/permissiongres.svg?branch=master)](https://travis-ci.org/xyproto/permissiongres) [![GoDoc](https://godoc.org/github.com/xyproto/permissiongres?status.svg)](http://godoc.org/github.com/xyproto/permissiongres)
 
 Middleware for keeping track of users, login states and permissions.
 
-Uses PostgreSQL as a backend.
-
-Known bugs
-----------
-
-* Work in progress, there are currently issues with the simplehstore package.
+Uses PostgreSQL as the database backend.
 
 
 Connecting

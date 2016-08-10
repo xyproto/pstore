@@ -14,7 +14,7 @@ func main() {
 	m := martini.Classic()
 
 	// New permissions middleware
-	perm, err := permissionsql.New()
+	perm, err := permissiongres.New()
 	if err != nil {
 		log.Fatalln(err)
 	}

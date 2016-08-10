@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// The structure that keeps track of the permissions for various path prefixes
+// Permissions keeps track of the permissions for various path prefixes
 type Permissions struct {
 	state              *UserState
 	adminPathPrefixes  []string
@@ -42,8 +42,8 @@ func NewWithConf(connectionString string) (*Permissions, error) {
 }
 
 // Initialize a Permissions struct with a dsn
-func NewWithDSN(connectionString string, database_name string) (*Permissions, error) {
-	state, err := NewUserStateWithDSN(connectionString, database_name, true)
+func NewWithDSN(connectionString string, databaseName string) (*Permissions, error) {
+	state, err := NewUserStateWithDSN(connectionString, databaseName, true)
 	if err != nil {
 		return nil, err
 	}
