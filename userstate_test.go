@@ -2,6 +2,7 @@ package permissiongres
 
 import (
 	"testing"
+	"fmt"
 
 	"github.com/xyproto/pinterface"
 )
@@ -91,6 +92,11 @@ func TestPasswordBackward(t *testing.T) {
 	}
 	userstate.SetPasswordAlgo("sha256")
 	if !userstate.CorrectPassword("bob", "hunter1") {
+		pwdHash, errPwd := userstate.users.Get("bob", "password")
+		if errPwd != nil {
+			t.Error(errPwd)
+		}
+		fmt.Println(pwdHash)
 		t.Error("Error, the sha256 password really is correct")
 	}
 
