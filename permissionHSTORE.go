@@ -1,5 +1,5 @@
-// Package permissionwrench provides a way to keeping track of users, login states and permissions.
-package permissionwrench
+// Package permissionHSTORE provides a way to keeping track of users, login states and permissions.
+package permissionHSTORE
 
 import (
 	"github.com/xyproto/pinterface"

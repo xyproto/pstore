@@ -7,15 +7,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/xyproto/permissionwrench"
+	"github.com/xyproto/permissionHSTORE"
 	"github.com/xyproto/pinterface"
 )
 
 type permissionHandler struct {
 	// perm is a Permissions structure that can be used to deny requests
 	// and acquire the UserState. By using `pinterface.IPermissions` instead
-	// of `*permissionwrench.Permissions`, the code is compatible with not only
-	// `permissionwrench`, but also other modules that uses other database
+	// of `*permissionHSTORE.Permissions`, the code is compatible with not only
+	// `permissionHSTORE`, but also other modules that uses other database
 	// backends, like `permissions2` which uses Redis.
 	perm pinterface.IPermissions
 
@@ -39,8 +39,8 @@ func (ph *permissionHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 func main() {
 	mux := http.NewServeMux()
 
-	// New permissionwrench middleware
-	perm, err := permissionwrench.New()
+	// New permissionHSTORE middleware
+	perm, err := permissionHSTORE.New()
 	if err != nil {
 		log.Fatal("Could not open Bolt database")
 	}

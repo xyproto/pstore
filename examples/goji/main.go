@@ -6,13 +6,13 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/xyproto/permissionwrench"
+	"github.com/xyproto/permissionHSTORE"
 	"github.com/zenazn/goji"
 )
 
 func main() {
 	// New permissions middleware
-	perm, err := permissionwrench.New()
+	perm, err := permissionHSTORE.New()
 	if err != nil {
 		log.Fatalln(err)
 	}

@@ -7,14 +7,14 @@ import (
 	"strings"
 
 	"github.com/go-martini/martini"
-	"github.com/xyproto/permissionwrench"
+	"github.com/xyproto/permissionHSTORE"
 )
 
 func main() {
 	m := martini.Classic()
 
 	// New permissions middleware
-	perm, err := permissionwrench.New()
+	perm, err := permissionHSTORE.New()
 	if err != nil {
 		log.Fatalln(err)
 	}

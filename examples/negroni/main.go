@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/codegangsta/negroni"
-	"github.com/xyproto/permissionwrench"
+	"github.com/xyproto/permissionHSTORE"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	// New permissions middleware
-	perm, err := permissionwrench.New()
+	perm, err := permissionHSTORE.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
