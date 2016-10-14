@@ -864,10 +864,39 @@ Password hashing
 * By default, all new password will be hashed with bcrypt.
 * For backwards compatibility, old password hashes with the length of a sha256 hash will be checked with sha256. To disable this behavior, and only ever use bcrypt, add this line: `userstate.SetPasswordAlgo("bcrypt")`
 
-Additional resources
---------------------
+Retrieving the underlying PostgreSQL database
+---------------------------------------------
 
-* Here is a short code snippet for retriving the underlying PostgreSQL database: https://gist.github.com/xyproto/08aa02cbdec33f5f0ff00a2183db29f6
+Here is a short example application for retrieving the underlying PostgreSQL database:
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/simplehstore"
+)
+
+func main() {
+	perm, err := permissionHSTORE.New()
+	if err != nil {
+		fmt.Println("Could not open database")
+		return
+	}
+	userstate := perm.UserState()
+
+	// A bit of checking is needed, since the database backend is interchangeable
+	if puserstate, ok := userstate.(*permissionwrench.UserState); ok {
+		if host, ok := puserstate.Host().(*simplehstore.Host); ok {
+			db := host.Database()
+			fmt.Printf("PostgreSQL database: %v (%T)\n", db, db)
+		}
+	} else {
+		fmt.Println("Not using the PostgreSQL database backend")
+	}
+}
+```
 
 Coding style
 ------------
