@@ -7,14 +7,14 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 )
 
 func main() {
 	g := gin.New()
 
 	// New permissions middleware
-	perm, err := permissionHSTORE.New()
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatalln(err)
 	}

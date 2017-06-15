@@ -1,4 +1,4 @@
-package permissionHSTORE
+package pstore
 
 import (
 	"testing"

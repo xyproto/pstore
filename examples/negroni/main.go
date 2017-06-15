@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/codegangsta/negroni"
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	// New permissions middleware
-	perm, err := permissionHSTORE.New()
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatalln(err)
 	}

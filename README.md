@@ -1,4 +1,4 @@
-#PermissionHSTORE [![Build Status](https://travis-ci.org/xyproto/permissionHSTORE.svg?branch=master)](https://travis-ci.org/xyproto/permissionHSTORE) [![GoDoc](https://godoc.org/github.com/xyproto/permissionHSTORE?status.svg)](http://godoc.org/github.com/xyproto/permissionHSTORE) [![Report Card](https://img.shields.io/badge/go_report-A+-brightgreen.svg?style=flat)](http://goreportcard.com/report/xyproto/permissionHSTORE)
+# pstore [![Build Status](https://travis-ci.org/xyproto/pstore.svg?branch=master)](https://travis-ci.org/xyproto/pstore) [![GoDoc](https://godoc.org/github.com/xyproto/pstore?status.svg)](http://godoc.org/github.com/xyproto/pstore) [![Report Card](https://img.shields.io/badge/go_report-A+-brightgreen.svg?style=flat)](http://goreportcard.com/report/xyproto/pstore)
 
 Middleware for keeping track of users, login states and permissions.
 
@@ -38,15 +38,15 @@ import (
 	"strings"
 
 	"github.com/codegangsta/negroni"
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 )
 
 func main() {
 	n := negroni.Classic()
 	mux := http.NewServeMux()
 
-	// New permissionHSTORE middleware
-	perm, err := permissionHSTORE.New()
+	// New pstore middleware
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -118,7 +118,7 @@ func main() {
 		http.Error(w, "Permission denied!", http.StatusForbidden)
 	})
 
-	// Enable the permissionHSTORE middleware
+	// Enable the pstore middleware
 	n.Use(perm)
 
 	// Use mux for routing, this goes last
@@ -141,14 +141,14 @@ import (
 	"strings"
 
 	"github.com/go-martini/martini"
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 )
 
 func main() {
 	m := martini.Classic()
 
-	// New permissionHSTORE middleware
-	perm, err := permissionHSTORE.New()
+	// New pstore middleware
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -228,7 +228,7 @@ func main() {
 		c.Next()
 	}
 
-	// Enable the permissionHSTORE middleware
+	// Enable the pstore middleware
 	m.Use(permissionHandler)
 
 	// Serve
@@ -248,14 +248,14 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 )
 
 func main() {
 	g := gin.New()
 
-	// New permissionHSTORE middleware
-	perm, err := permissionHSTORE.New()
+	// New pstore middleware
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -279,7 +279,7 @@ func main() {
 	// Logging middleware
 	g.Use(gin.Logger())
 
-	// Enable the permissionHSTORE middleware, must come before recovery
+	// Enable the pstore middleware, must come before recovery
 	g.Use(permissionHandler)
 
 	// Recovery middleware
@@ -364,14 +364,14 @@ import (
 	"strings"
 
 	"github.com/Unknwon/macaron"
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 )
 
 func main() {
 	m := macaron.Classic()
 
-	// New permissionHSTORE middleware
-	perm, err := permissionHSTORE.New()
+	// New pstore middleware
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -399,7 +399,7 @@ func main() {
 		ctx.Next()
 	}
 
-	// Enable the permissionHSTORE middleware, must come before recovery
+	// Enable the pstore middleware, must come before recovery
 	m.Use(permissionHandler)
 
 	// Recovery middleware
@@ -486,7 +486,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 )
 
 // Convenience function for making it easier to get hold of http.ResponseWriter
@@ -503,7 +503,7 @@ func main() {
 	e := echo.New()
 
 	// New permissions middleware
-	perm, err := permissionHSTORE.New()
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -614,13 +614,13 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 	"github.com/zenazn/goji"
 )
 
 func main() {
 	// New permissions middleware
-	perm, err := permissionHSTORE.New()
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -727,15 +727,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 	"github.com/xyproto/pinterface"
 )
 
 type permissionHandler struct {
 	// perm is a Permissions structure that can be used to deny requests
 	// and acquire the UserState. By using `pinterface.IPermissions` instead
-	// of `*permissionHSTORE.Permissions`, the code is compatible with not only
-	// `permissionHSTORE`, but also other modules that uses other database
+	// of `*pstore.Permissions`, the code is compatible with not only
+	// `pstore`, but also other modules that uses other database
 	// backends, like `permissions2` which uses Redis.
 	perm pinterface.IPermissions
 
@@ -759,8 +759,8 @@ func (ph *permissionHandler) ServeHTTP(w http.ResponseWriter, req *http.Request)
 func main() {
 	mux := http.NewServeMux()
 
-	// New permissionHSTORE middleware
-	perm, err := permissionHSTORE.New()
+	// New pstore middleware
+	perm, err := pstore.New()
 	if err != nil {
 		log.Fatal("Could not open Bolt database")
 	}
@@ -874,12 +874,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/xyproto/permissionHSTORE"
+	"github.com/xyproto/pstore"
 	"github.com/xyproto/simplehstore"
 )
 
 func main() {
-	perm, err := permissionHSTORE.New()
+	perm, err := pstore.New()
 	if err != nil {
 		fmt.Println("Could not open database")
 		return
@@ -906,12 +906,12 @@ Coding style
 Online API Documentation
 ------------------------
 
-[godoc.org](http://godoc.org/github.com/xyproto/permissionHSTORE)
+[godoc.org](http://godoc.org/github.com/xyproto/pstore)
 
 General information
 -------------------
 
-* Version: 2.1
+* Version: 3.0
 * License: MIT
 * Alexander F Rødseth <xyproto@archlinux.org>
 

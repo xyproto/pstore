@@ -1,5 +1,5 @@
-// Package permissionHSTORE provides a way to keeping track of users, login states and permissions.
-package permissionHSTORE
+// Package pstore provides a way to keeping track of users, login states and permissions.
+package pstore
 
 import (
 	"github.com/xyproto/pinterface"
@@ -19,7 +19,7 @@ type Permissions struct {
 
 const (
 	// Version number. Stable API within major version numbers.
-	Version = 2.1
+	Version = 3.0
 )
 
 // Initialize a Permissions struct with all the default settings.
