@@ -227,5 +227,24 @@ func TestLogout(t *testing.T) {
 	if userstate.HasUser("bob") {
 		t.Error("Error, user bob should not exist")
 	}
+}
 
+func TestEmail(t *testing.T) {
+	userstate, err := NewUserState(connectionString, true)
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	userstate.AddUser("bob", "hunter1", "bob@zombo.com")
+	username, err := userstate.HasEmail("bob@zombo.com")
+	if err != nil {
+		t.Error("Error, the e-mail should exist:", err)
+	}
+	if username != "bob" {
+		t.Error("Error, the e-mail address should belong to bob, but belongs to:", username)
+	}
+	username, err = userstate.HasEmail("rob@zombo.com")
+	if err != ErrNotFound { // NOTE: ==
+		t.Error("Error, the e-mail should not exist: " + username)
+	}
 }
