@@ -5,6 +5,10 @@ Middleware for keeping track of users, login states and permissions.
 Uses [PostgreSQL](https://postgresql.org) for the database. For using [Redis](http://redis.io) as a backend instead, look into [permissions2](https://github.com/xyproto/permissions2).
 There is also a [BoltDB](https://github.com/xyproto/permissionbolt) and [MariaDB/MySQL](https://github.com/xyproto/permissionsql) backend. They are interchangeable.
 
+Online API Documentation
+------------------------
+
+[godoc.org](http://godoc.org/github.com/xyproto/pstore)
 
 Connecting
 ----------
@@ -597,6 +601,7 @@ func main() {
 }
 ~~~
 
+
 Default permissions
 -------------------
 
@@ -606,12 +611,14 @@ Default permissions
 
 The default permissions can be cleared with the `Clear()` function.
 
+
 Password hashing
 ----------------
 
 * bcrypt is used by default for hashing passwords. sha256 is also supported.
 * By default, all new password will be hashed with bcrypt.
 * For backwards compatibility, old password hashes with the length of a sha256 hash will be checked with sha256. To disable this behavior, and only ever use bcrypt, add this line: `userstate.SetPasswordAlgo("bcrypt")`
+
 
 Retrieving the underlying PostgreSQL database
 ---------------------------------------------
@@ -633,11 +640,11 @@ func main() {
 		fmt.Println("Could not open database")
 		return
 	}
-	userstate := perm.UserState()
+	ustate := perm.UserState()
 
 	// A bit of checking is needed, since the database backend is interchangeable
-	if puserstate, ok := userstate.(*permissionwrench.UserState); ok {
-		if host, ok := puserstate.Host().(*simplehstore.Host); ok {
+	if pustate, ok := ustate.(*pstore.UserState); ok {
+		if host, ok := pustate.Host().(*simplehstore.Host); ok {
 			db := host.Database()
 			fmt.Printf("PostgreSQL database: %v (%T)\n", db, db)
 		}
@@ -647,15 +654,12 @@ func main() {
 }
 ```
 
+
 Coding style
 ------------
 
 * The code shall always be formatted with `go fmt`.
 
-Online API Documentation
-------------------------
-
-[godoc.org](http://godoc.org/github.com/xyproto/pstore)
 
 General information
 -------------------
