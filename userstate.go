@@ -279,10 +279,10 @@ func (state *UserState) SetUsernameCookie(w http.ResponseWriter, username string
 		return errors.New("Can't set cookie for empty username")
 	}
 	if !state.HasUser(username) {
-		return errors.New("Can't store cookie for non-existsing user")
+		return errors.New("Can't store cookie for non-existing user")
 	}
 	// Create a cookie that lasts for a while ("timeout" seconds),
-	// this is the equivivalent of a session for a given username.
+	// this is the equivalent of a session for a given username.
 	cookie.SetSecureCookiePath(w, "user", username, state.cookieTime, "/", state.cookieSecret)
 	return nil
 }
@@ -356,7 +356,7 @@ func (state *UserState) addUserUnchecked(username, passwordHash, email string) {
 	state.users.Set(username, "password", passwordHash)
 	state.users.Set(username, "email", email)
 
-	// Addditional fields
+	// Additional fields
 	additionalfields := []string{"loggedin", "confirmed", "admin"}
 	for _, fieldname := range additionalfields {
 		state.users.Set(username, fieldname, "false")
