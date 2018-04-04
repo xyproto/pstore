@@ -1,10 +1,10 @@
 language: go
 
 services:
-    - postgresql: "9.1"
+    - postgresql: "9.4"
 
 go:
-    - 1.5
-    - 1.6
-    - 1.7
+    - 1.8
+    - 1.9
+    - "1.10"
     - tip
