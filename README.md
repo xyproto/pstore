@@ -611,6 +611,10 @@ Default permissions
 
 The default permissions can be cleared with the `Clear()` function.
 
+Coding style
+------------
+
+* The code shall always be formatted with `go fmt`.
 
 Password hashing
 ----------------
@@ -618,6 +622,13 @@ Password hashing
 * bcrypt is used by default for hashing passwords. sha256 is also supported.
 * By default, all new password will be hashed with bcrypt.
 * For backwards compatibility, old password hashes with the length of a sha256 hash will be checked with sha256. To disable this behavior, and only ever use bcrypt, add this line: `userstate.SetPasswordAlgo("bcrypt")`
+
+Passing userstate between functions, files and to other Go packages
+-------------------------------------------------------------------
+
+Using the `*pinterface.IUserState` type (from the [pinterface](https://github.com/xyproto/pinterface) package) makes it possible to pass UserState structs between functions, also in other packages. By using this interface, it is possible to seamlessly change the database backend from, for instance, Redis ([permissions2](https://github.com/xyproto/permissions2)) to BoltDB ([permissionbolt](https://github.com/xyproto/permissionbolt)).
+
+[pstore](https://github.com/xyproto/pstore), [permissionsql](https://github.com/xyproto/permissionsql), [permissionbolt](https://github.com/xyproto/permissionbolt) and [permissions2](https://github.com/xyproto/permissions2) are interchangeable.
 
 
 Retrieving the underlying PostgreSQL database
@@ -653,12 +664,6 @@ func main() {
 	}
 }
 ```
-
-
-Coding style
-------------
-
-* The code shall always be formatted with `go fmt`.
 
 
 General information
