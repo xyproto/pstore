@@ -671,5 +671,5 @@ General information
 
 * Version: 3.0
 * License: MIT
-* Alexander F Rødseth <xyproto@archlinux.org>
+* Alexander F Rødseth &lt;xyproto@archlinux.org&gt;
 
