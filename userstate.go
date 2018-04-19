@@ -153,6 +153,11 @@ func (state *UserState) Host() pinterface.IHost {
 	return state.host
 }
 
+// Set a custom PostgreSQL database table prefix
+func (state *UserState) SetTablePrefix(prefix string) {
+	db.SetColumnNames(prefix+"_a_list", prefix+"_a_set", prefix+"_owner", prefix+"_a_kv_")
+}
+
 // Close the connection to the database host
 func (state *UserState) Close() {
 	state.host.Close()
