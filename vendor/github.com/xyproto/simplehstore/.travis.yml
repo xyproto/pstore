@@ -1,0 +1,27 @@
+language: go
+
+addons:
+  - postgresql: "9.6"
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c "CREATE DATABASE test;" -U postgres
+
+go:
+  - "1.9"
+  - "1.10"
+  - "1.11"
+
+os:
+  - linux
+
+dist: trusty
+sudo: false
+
+install: true
+
+script:
+  - env GO111MODULE=on go build
+  - env GO111MODULE=on go test
