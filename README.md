@@ -673,6 +673,6 @@ func main() {
 General information
 -------------------
 
-* Version: 3.0
+* Version: 3.0.0
 * License: MIT
-* Alexander F Rødseth &lt;xyproto@archlinux.org&gt;
+* Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
