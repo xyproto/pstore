@@ -7,7 +7,7 @@ import (
 )
 
 func TestInterface(t *testing.T) {
-	perm, err := NewWithConf(connectionString)
+	perm, err := NewWithConf(defaultConnectionString)
 	if err != nil {
 		t.Error(err)
 	}

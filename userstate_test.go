@@ -7,15 +7,11 @@ import (
 	"github.com/xyproto/pinterface"
 )
 
-const (
-	connectionString = "postgres:@127.0.0.1/"
-)
-
 func TestPerm(t *testing.T) {
 	//db.Verbose = true
 
 	//userstate := NewUserStateSimple() // for localhost
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
@@ -56,7 +52,7 @@ func TestPerm(t *testing.T) {
 
 func TestPasswordBasic(t *testing.T) {
 	//userstate := NewUserStateSimple() // for localhost
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
@@ -79,7 +75,7 @@ func TestPasswordBasic(t *testing.T) {
 // Check if the functionality for backwards compatible hashing works
 func TestPasswordBackward(t *testing.T) {
 	//userstate := NewUserStateSimple() // for localhost
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
@@ -116,7 +112,7 @@ func TestPasswordBackward(t *testing.T) {
 // Check if the functionality for backwards compatible hashing works
 func TestPasswordNotBackward(t *testing.T) {
 	//userstate := NewUserStateSimple() // for localhost
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
@@ -142,7 +138,7 @@ func TestPasswordNotBackward(t *testing.T) {
 
 func TestPasswordAlgoMatching(t *testing.T) {
 	//userstate := NewUserStateSimple() // for localhost
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
@@ -162,7 +158,7 @@ func TestPasswordAlgoMatching(t *testing.T) {
 
 func TestIUserState(t *testing.T) {
 	//userstate := NewUserStateSimple() // for localhost
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
@@ -174,7 +170,7 @@ func TestIUserState(t *testing.T) {
 
 func TestHostPassword(t *testing.T) {
 	//userstate := NewUserStateSimple() // for localhost
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
@@ -192,7 +188,7 @@ func TestHostPassword(t *testing.T) {
 }
 
 func TestLogout(t *testing.T) {
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
@@ -230,7 +226,7 @@ func TestLogout(t *testing.T) {
 }
 
 func TestEmail(t *testing.T) {
-	userstate, err := NewUserState(connectionString, true)
+	userstate, err := NewUserState(defaultConnectionString, true)
 	if err != nil {
 		t.Error(err)
 		return
