@@ -12,7 +12,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/xyproto/cookie v0.0.0-20210319112338-2e0ffd4b75a9
 	github.com/xyproto/env v1.1.0
-	github.com/xyproto/pinterface v0.0.0-20200807103852-04e20752b31c
+	github.com/xyproto/pinterface v0.0.0-20211009195425-512bcf6c02ee
 	github.com/xyproto/randomstring v0.0.0-20210824125156-24cf50c16803 // indirect
 	github.com/xyproto/simplehstore v0.0.0-20211009193353-ddef07ecb0d3
 	github.com/zenazn/goji v0.9.0
