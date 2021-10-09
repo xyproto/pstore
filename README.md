@@ -1,6 +1,6 @@
 # PostgreSQL Store
 
-![Build](https://github.com/xyproto/pstore/workflows/Build/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/pstore)](https://goreportcard.com/report/github.com/xyproto/pstore) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/pstore/main/LICENSE)
+![Build](https://github.com/xyproto/pstore/workflows/test.yml/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/pstore)](https://goreportcard.com/report/github.com/xyproto/pstore) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/pstore/main/LICENSE)
 
 Middleware for keeping track of users, login states and permissions.
 
