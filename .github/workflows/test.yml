@@ -1,62 +1,51 @@
-on: [push, pull_request]
-name: Build
-env:
-  GO111MODULE: on
-jobs:
-  test:
-    strategy:
-      matrix:
-        go-version: [1.13.x, 1.14.x, 1.15.x]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{ matrix.go-version }}
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Test
-      run: go test ./...
+name: Run unit tests
 
-  test-cache:
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  test:
+    name: Test
     runs-on: ubuntu-latest
+
     services:
       postgres:
-        image: postgres
+        image: postgres:12-alpine
         env:
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD:
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     steps:
-    - name: Install Go
+
+    - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
-        go-version: 1.15.x
-    - name: Checkout code
+        go-version: ^1.16
+      id: go
+
+    - name: Check out code into the Go module directory
       uses: actions/checkout@v2
-    - uses: actions/cache@v2
-      with:
-        path: |
-          ~/go/pkg/mod              # Module download cache
-          ~/.cache/go-build         # Build cache (Linux)
-          ~/Library/Caches/go-build # Build cache (Mac)
-          '%LocalAppData%\go-build' # Build cache (Windows)
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
+
+    - name: Install golang-migrate
+      run: |
+        curl -L https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz | tar xvz
+        sudo mv migrate.linux-amd64 /usr/bin/migrate
+        which migrate
+
+    - name: Run migrations
+      run: make migrateup
+
     - name: Test
-      run: go test ./...
+      run: make test
