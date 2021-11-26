@@ -14,7 +14,7 @@ require (
 	github.com/xyproto/env v1.7.0
 	github.com/xyproto/pinterface v0.0.0-20211009195425-512bcf6c02ee
 	github.com/xyproto/randomstring v0.0.0-20211020123341-4731a123782f // indirect
-	github.com/xyproto/simplehstore v1.3.0
+	github.com/xyproto/simplehstore v1.4.0
 	github.com/zenazn/goji v0.9.0
 	golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect

@@ -45,7 +45,7 @@ github.com/xyproto/env
 github.com/xyproto/pinterface
 # github.com/xyproto/randomstring v0.0.0-20211020123341-4731a123782f
 github.com/xyproto/randomstring
-# github.com/xyproto/simplehstore v1.3.0
+# github.com/xyproto/simplehstore v1.4.0
 github.com/xyproto/simplehstore
 # github.com/zenazn/goji v0.9.0
 github.com/zenazn/goji
