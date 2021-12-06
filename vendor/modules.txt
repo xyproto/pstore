@@ -41,11 +41,11 @@ github.com/ugorji/go/codec
 github.com/xyproto/cookie
 # github.com/xyproto/env v1.7.0
 github.com/xyproto/env
-# github.com/xyproto/pinterface v0.0.0-20211009195425-512bcf6c02ee
+# github.com/xyproto/pinterface v1.5.3
 github.com/xyproto/pinterface
 # github.com/xyproto/randomstring v0.0.0-20211020123341-4731a123782f
 github.com/xyproto/randomstring
-# github.com/xyproto/simplehstore v1.4.0
+# github.com/xyproto/simplehstore v1.8.0
 github.com/xyproto/simplehstore
 # github.com/zenazn/goji v0.9.0
 github.com/zenazn/goji
@@ -55,7 +55,7 @@ github.com/zenazn/goji/graceful/listener
 github.com/zenazn/goji/web
 github.com/zenazn/goji/web/middleware
 github.com/zenazn/goji/web/mutil
-# golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871
+# golang.org/x/crypto v0.0.0-20211202192323-5770296d904e
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
 golang.org/x/crypto/sha3
