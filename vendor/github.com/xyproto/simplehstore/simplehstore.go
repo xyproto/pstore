@@ -12,12 +12,12 @@ import (
 
 	// Using the PostgreSQL database engine
 	pq "github.com/lib/pq"
-	"github.com/xyproto/env"
+	"github.com/xyproto/env/v2"
 )
 
 const (
 	// VersionString is the current version of simplehstore.
-	VersionString = "1.8.0"
+	VersionString = "1.8.1"
 
 	defaultStringType = "TEXT"
 	defaultPort       = 5432
