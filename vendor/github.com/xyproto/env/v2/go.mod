@@ -1,3 +1,3 @@
 module github.com/xyproto/env/v2
 
-go 1.15
+go 1.19
