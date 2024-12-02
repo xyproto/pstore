@@ -8,13 +8,13 @@ github.com/go-martini/martini
 github.com/lib/pq
 github.com/lib/pq/oid
 github.com/lib/pq/scram
-# github.com/xyproto/cookie/v2 v2.2.4
+# github.com/xyproto/cookie/v2 v2.2.6
 github.com/xyproto/cookie/v2
-# github.com/xyproto/env/v2 v2.2.5
+# github.com/xyproto/env/v2 v2.5.2
 github.com/xyproto/env/v2
-# github.com/xyproto/pinterface v1.5.3
+# github.com/xyproto/pinterface v1.5.4
 github.com/xyproto/pinterface
-# github.com/xyproto/randomstring v1.0.5
+# github.com/xyproto/randomstring v1.2.0
 github.com/xyproto/randomstring
 # github.com/xyproto/simplehstore v1.8.2
 github.com/xyproto/simplehstore
@@ -26,6 +26,6 @@ github.com/zenazn/goji/graceful/listener
 github.com/zenazn/goji/web
 github.com/zenazn/goji/web/middleware
 github.com/zenazn/goji/web/mutil
-# golang.org/x/crypto v0.17.0
+# golang.org/x/crypto v0.29.0
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
