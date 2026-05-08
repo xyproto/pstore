@@ -7,27 +7,34 @@ github.com/codegangsta/negroni
 # github.com/go-martini/martini v0.0.0-20170121215854-22fa46961aab
 ## explicit
 github.com/go-martini/martini
-# github.com/lib/pq v1.10.9
-## explicit; go 1.13
+# github.com/lib/pq v1.12.3
+## explicit; go 1.21
 github.com/lib/pq
+github.com/lib/pq/internal/pgpass
+github.com/lib/pq/internal/pgservice
+github.com/lib/pq/internal/pqsql
+github.com/lib/pq/internal/pqtime
+github.com/lib/pq/internal/pqutil
+github.com/lib/pq/internal/proto
 github.com/lib/pq/oid
+github.com/lib/pq/pqerror
 github.com/lib/pq/scram
 # github.com/xyproto/cookie/v2 v2.2.7
 ## explicit; go 1.17
 github.com/xyproto/cookie/v2
-# github.com/xyproto/env/v2 v2.5.3
+# github.com/xyproto/env/v2 v2.5.6
 ## explicit; go 1.19
 github.com/xyproto/env/v2
-# github.com/xyproto/pinterface v1.5.4
+# github.com/xyproto/pinterface/v2 v2.1.2
 ## explicit; go 1.8
-github.com/xyproto/pinterface
+github.com/xyproto/pinterface/v2
 # github.com/xyproto/randomstring v1.2.0
 ## explicit; go 1.17
 github.com/xyproto/randomstring
-# github.com/xyproto/simplehstore v1.8.5
+# github.com/xyproto/simplehstore v1.9.0
 ## explicit; go 1.24.0
 github.com/xyproto/simplehstore
-# github.com/zenazn/goji v0.9.0
+# github.com/zenazn/goji v1.0.1
 ## explicit
 github.com/zenazn/goji
 github.com/zenazn/goji/bind
@@ -36,7 +43,7 @@ github.com/zenazn/goji/graceful/listener
 github.com/zenazn/goji/web
 github.com/zenazn/goji/web/middleware
 github.com/zenazn/goji/web/mutil
-# golang.org/x/crypto v0.45.0
-## explicit; go 1.24.0
+# golang.org/x/crypto v0.50.0
+## explicit; go 1.25.0
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
