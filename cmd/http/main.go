@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/xyproto/pinterface"
+	"github.com/xyproto/pinterface/v2"
 	"github.com/xyproto/pstore"
 )
 
