@@ -43,7 +43,7 @@ github.com/zenazn/goji/graceful/listener
 github.com/zenazn/goji/web
 github.com/zenazn/goji/web/middleware
 github.com/zenazn/goji/web/mutil
-# golang.org/x/crypto v0.50.0
-## explicit; go 1.25.0
+# golang.org/x/crypto v0.57.0
+## explicit; go 1.26.0
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish

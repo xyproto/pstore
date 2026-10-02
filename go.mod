@@ -1,6 +1,6 @@
 module github.com/xyproto/pstore
 
-go 1.25.0
+go 1.26.0
 
 require (
 	github.com/codegangsta/negroni v1.0.0
@@ -10,7 +10,7 @@ require (
 	github.com/xyproto/pinterface/v2 v2.1.2
 	github.com/xyproto/simplehstore v1.9.0
 	github.com/zenazn/goji v1.0.1
-	golang.org/x/crypto v0.50.0
+	golang.org/x/crypto v0.57.0
 )
 
 require (
